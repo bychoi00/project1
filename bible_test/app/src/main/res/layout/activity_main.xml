@@ -58,7 +58,6 @@
             android:layout_height="0dp"
             android:layout_weight="7"/>
 
-
         <Button
             android:id="@+id/button1"
             android:layout_width="match_parent"
