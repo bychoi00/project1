@@ -1,5 +1,11 @@
 package com.example.media_choi.bible_test;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 /**
  * Created by Media_Choi on 2018-02-09.
  */
@@ -25,24 +31,38 @@ public class DataModel {
         return body;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public static DataModel fromJson(JSONObject jsonObject) {
+        DataModel d = new DataModel();
+        try {
+            d.id = jsonObject.getString("id");
+            d.chapter = jsonObject.getString("chapter");
+            d.category = jsonObject.getString("category");
+            d.title = jsonObject.getString("title");
+            d.body = jsonObject.getString("body");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return  d;
     }
 
-    public void setChapter(String chapter) {
-        this.chapter = chapter;
-    }
+    public static ArrayList<DataModel> fromJson(JSONArray jsonArray){
+        JSONObject jsonObject;
+        ArrayList<DataModel> arrayList = new ArrayList<DataModel>(jsonArray.length());
+        for(int i =0 ; i < jsonArray.length(); i++){
+            try{
+                jsonObject = jsonArray.getJSONObject(i);
+            }catch (JSONException e){
+                e.printStackTrace();
+                continue;
+            }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
+            DataModel data = DataModel.fromJson(jsonObject);
+            if(data !=null){
+                arrayList.add(data);
+            }
+        }
+        return arrayList;
     }
 
     String id;
@@ -50,5 +70,4 @@ public class DataModel {
     String category;
     String title;
     String body;
-
 }
