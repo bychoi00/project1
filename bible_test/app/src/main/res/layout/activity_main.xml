@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.media_choi.bible_test.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.example.media_choi.bible_test.MainActivity">
 
 
     <LinearLayout
-        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"/>
+            android:layout_weight="2" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,13 +27,13 @@
             android:orientation="horizontal">
 
             <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:padding="5dp"
                 android:id="@+id/progressbar"
+                style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="10"
-                android:layout_gravity="center"/>
+                android:padding="5dp" />
 
             <Button
                 android:id="@+id/button2"
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="한/영"/>
+                android:text="한/영" />
 
         </LinearLayout>
 
@@ -49,24 +49,64 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/mylayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
-        android:orientation="vertical">
+        android:layout_weight="6"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
-        <FrameLayout
-            android:id="@+id/main_frame"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="7"/>
 
-        <Button
-            android:id="@+id/button1"
+        <TextView
+            android:id="@+id/textCategory"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="button"/>
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="category"
+            android:textSize="23dp" />
+
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:paddingTop="5dp"
+            android:text="title"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="BodyBodyBody"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textUnderTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingTop="5dp"
+            android:text="title"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textChapter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="chapter"
+            android:textSize="16dp" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonCheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="button" />
 
 </LinearLayout>
