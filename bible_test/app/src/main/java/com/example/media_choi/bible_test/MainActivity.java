@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    DBHelper dbHelper;
     Button buttonCheck;
     TextView textCategory;
     TextView textTitle;
@@ -30,11 +31,15 @@ public class MainActivity extends AppCompatActivity {
     DataModel jsonData;
     String id;
 
+    public static final String FILE_NAME="bible_test.json";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //DB
+        dbHelper = new DBHelper(this);
 
         //선언
         textCategory = (TextView) findViewById(R.id.textCategory);
@@ -49,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
         id = "A10101";
         jsonData = DataLoad(id);
 
+        textChapter.setText(jsonData.chapter);
         textCategory.setText(jsonData.category);
         textTitle.setText(jsonData.title);
         textBody.setText(jsonData.body);
-        textChapter.setText(jsonData.chapter);
         textUnderTitle.setText(jsonData.title);
 
         //이벤트
@@ -108,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         DataModel dataModel = new DataModel();
 
         try {
-            InputStream is = getAssets().open("test.json");
+            InputStream is = getAssets().open(FILE_NAME);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
