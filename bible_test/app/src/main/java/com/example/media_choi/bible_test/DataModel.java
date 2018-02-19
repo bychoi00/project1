@@ -27,9 +27,14 @@ public class DataModel {
         return title;
     }
 
-    public String getBody() {
-        return body;
+    public String getBody_kor() {
+        return body_kor;
     }
+
+    public String getBody_eng() {
+        return body_eng;
+    }
+
 
     public static DataModel fromJson(JSONObject jsonObject) {
         DataModel d = new DataModel();
@@ -38,7 +43,8 @@ public class DataModel {
             d.chapter = jsonObject.getString("chapter");
             d.category = jsonObject.getString("category");
             d.title = jsonObject.getString("title");
-            d.body = jsonObject.getString("body");
+            d.body_kor = jsonObject.getString("body_kor");
+            d.body_eng = jsonObject.getString("body_eng");
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
@@ -69,5 +75,7 @@ public class DataModel {
     String chapter;
     String category;
     String title;
-    String body;
+    String body_kor;
+    String body_eng;
+
 }
