@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mDbHelper = new DBHelper(this);
+
         //선언
         textCategory = (TextView) findViewById(R.id.textCategory);
         textTitle = (TextView) findViewById(R.id.textTitle);
@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //json Data Load , id를 로컬DB를 통해 저장시켜뒀다가 종료시점 이후 불러오기***************************************
+        mDbHelper = new DBHelper(this);
+        mDbHelper.DataLoad();
 
         //이벤트
         buttonCheck.setOnClickListener(new View.OnClickListener() {

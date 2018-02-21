@@ -39,7 +39,8 @@ public class DBHelper extends SQLiteOpenHelper {
             COL_CATEGORY + " TEXT, " +
             COL_TITLE + " TEXT, " +
             COL_BODY_KOR + " TEXT, " +
-            COL_BODY_ENG + " TEXT)";
+            COL_BODY_ENG + " TEXT "+ ")";
+
 
 
     public DBHelper(Context context) {
@@ -51,30 +52,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_QUERY);
         Log.d("Database operations", "Table Created...");
-
         DataLoad();
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP IF TABLE EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
         Log.d("Database operations", "Database updated...");
-    }
-
-    public void insertBible(String Id, String Chapter, String Category, String Title, String Body_KOR, String Body_ENG) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COL_ID, Id);
-        values.put(COL_CHAPTER, Chapter);
-        values.put(COL_CATEGORY, Category);
-        values.put(COL_TITLE, Title);
-        values.put(COL_BODY_KOR, Body_KOR);
-        values.put(COL_BODY_ENG, Body_ENG);
-
-        db.insert(TABLE_NAME, null, values);
-        Log.d("Database operations", "One row inserted...");
-        db.close();
     }
 
     public void DataLoad() {
@@ -121,7 +106,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 //insert DB
                 //mDbHelper.insertBible(id,chapter,category,title,body_kor,body_eng);
-
                 db = this.getWritableDatabase();
                 ContentValues values = new ContentValues();
                 values.put(COL_ID, id);
@@ -134,7 +118,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 db.insert(TABLE_NAME, null, values);
                 Log.d("Database operations", "One row inserted...");
                 db.close();
-                Log.d("Insert DB","Inserted Success");
 
             }
 
