@@ -10,8 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
     Button buttonCheck;
@@ -22,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     TextView textChapter;
     LinearLayout myLayout;
     String body;
-    ArrayList<DataModel> data;
     DataModel jsonData;
     String id;
     DBHelper mDbHelper;
@@ -32,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        mDbHelper = new DBHelper(this);
         //선언
         textCategory = (TextView) findViewById(R.id.textCategory);
         textTitle = (TextView) findViewById(R.id.textTitle);
@@ -42,16 +38,9 @@ public class MainActivity extends AppCompatActivity {
         textUnderTitle = (TextView) findViewById(R.id.textUnderTitle);
         buttonCheck = (Button) findViewById(R.id.buttonCheck);
         myLayout = (LinearLayout) findViewById(R.id.mylayout);
-        mDbHelper = new DBHelper(this);
+
 
         //json Data Load , id를 로컬DB를 통해 저장시켜뒀다가 종료시점 이후 불러오기***************************************
-
-
-        textChapter.setText(jsonData.chapter);
-        textCategory.setText(jsonData.category);
-        textTitle.setText(jsonData.title);
-        textBody.setText(jsonData.body_kor);
-        textUnderTitle.setText(jsonData.title);
 
         //이벤트
         buttonCheck.setOnClickListener(new View.OnClickListener() {
