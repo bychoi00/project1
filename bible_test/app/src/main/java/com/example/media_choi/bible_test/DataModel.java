@@ -71,6 +71,20 @@ public class DataModel {
         return arrayList;
     }
 
+    public DataModel(String id, String chapter, String category, String title, String body_kor, String body_eng) {
+        this.id = id;
+        this.chapter = chapter;
+        this.category = category;
+        this.title = title;
+        this.body_kor = body_kor;
+        this.body_eng = body_eng;
+    }
+
+    public DataModel()
+    {
+
+    }
+
     String id;
     String chapter;
     String category;

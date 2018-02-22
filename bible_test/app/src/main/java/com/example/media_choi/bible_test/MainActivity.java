@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     Button buttonCheck;
@@ -19,10 +21,9 @@ public class MainActivity extends AppCompatActivity {
     TextView textUnderTitle;
     TextView textChapter;
     LinearLayout myLayout;
-    String body;
-    DataModel jsonData;
-    String id;
     DBHelper mDbHelper;
+    ArrayList<DataModel> bibles = new ArrayList<>();
+    int count=1;
 
 
     @Override
@@ -39,10 +40,16 @@ public class MainActivity extends AppCompatActivity {
         buttonCheck = (Button) findViewById(R.id.buttonCheck);
         myLayout = (LinearLayout) findViewById(R.id.mylayout);
 
-
         //json Data Load , id를 로컬DB를 통해 저장시켜뒀다가 종료시점 이후 불러오기***************************************
         mDbHelper = new DBHelper(this);
-        mDbHelper.DataLoad();
+        bibles = mDbHelper.getAllData(); //db에서 모든 파일 꺼내오기
+
+        //초기화면 display , DB에 저장된 마지막 사용자화면 디스플레이
+        textCategory.setText(bibles.get(0).category);
+        textTitle.setText(bibles.get(0).title);
+        textBody.setText(bibles.get(0).body_kor);
+        textChapter.setText(bibles.get(0).chapter);
+        textUnderTitle.setText(bibles.get(0).title);
 
         //이벤트
         buttonCheck.setOnClickListener(new View.OnClickListener() {
@@ -56,12 +63,25 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "myLayout touch!", Toast.LENGTH_SHORT).show();
 
-                //json Data Load
-                textCategory.setText(jsonData.category);
-                textTitle.setText(jsonData.title);
-                textBody.setText(jsonData.body_kor);
-                textChapter.setText(jsonData.chapter);
-                textUnderTitle.setText(jsonData.title);
+                //layout 클릭 시 마다 텍스트 변경 디스플레이
+                if(count==bibles.size())
+                {
+                    textCategory.setText(bibles.get(0).category);
+                    textTitle.setText(bibles.get(0).title);
+                    textBody.setText(bibles.get(0).body_kor);
+                    textChapter.setText(bibles.get(0).chapter);
+                    textUnderTitle.setText(bibles.get(0).title);
+                    count=1;
+                }
+                else{
+                    textCategory.setText(bibles.get(count).category);
+                    textTitle.setText(bibles.get(count).title);
+                    textBody.setText(bibles.get(count).body_kor);
+                    textChapter.setText(bibles.get(count).chapter);
+                    textUnderTitle.setText(bibles.get(count).title);
+                    count++;
+                }
+
             }
         });
 

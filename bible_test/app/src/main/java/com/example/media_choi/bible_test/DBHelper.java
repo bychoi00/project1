@@ -3,11 +3,13 @@ package com.example.media_choi.bible_test;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -30,10 +32,9 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String COL_BODY_ENG = "BODY_ENG";
     private static final String COL_TITLE = "TITLE";
     private Resources mResources;
-    private DBHelper mDbHelper;
     private SQLiteDatabase db;
     ArrayList<DataModel> data;
-    public static final String CREATE_QUERY = "CREATE TABLE " + TABLE_NAME + " (" +
+    private static final String CREATE_QUERY = "CREATE TABLE " + TABLE_NAME + " (" +
             COL_ID + " TEXT, " +
             COL_CHAPTER + " TEXT, " +
             COL_CATEGORY + " TEXT, " +
@@ -41,28 +42,42 @@ public class DBHelper extends SQLiteOpenHelper {
             COL_BODY_KOR + " TEXT, " +
             COL_BODY_ENG + " TEXT "+ ")";
 
+    private static final String DELETE_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
+
 
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+
         mResources = context.getResources();
+
+        db=this.getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_QUERY);
         Log.d("Database operations", "Table Created...");
-        DataLoad();
+
+        try{
+            JsonToDB(db);
+        }catch (IOException e){
+            e.printStackTrace();
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        onCreate(db);
+        db.execSQL(DELETE_QUERY);
         Log.d("Database operations", "Database updated...");
+        onCreate(db);
     }
 
-    public void DataLoad() {
+    public void JsonToDB(SQLiteDatabase db) throws IOException, JSONException {
 
         //json데이터 로드
         String json = null;
@@ -105,8 +120,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 body_eng = jsonObject.getString(DB_BODY_ENG);
 
                 //insert DB
-                //mDbHelper.insertBible(id,chapter,category,title,body_kor,body_eng);
-                db = this.getWritableDatabase();
                 ContentValues values = new ContentValues();
                 values.put(COL_ID, id);
                 values.put(COL_CHAPTER, chapter);
@@ -117,12 +130,35 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 db.insert(TABLE_NAME, null, values);
                 Log.d("Database operations", "One row inserted...");
-                db.close();
-
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<DataModel> getAllData(){
+
+        ArrayList<DataModel> bibles = new ArrayList<>();
+        db = this.getReadableDatabase();
+
+        //Query 문
+        String select_all = "Select * from " + TABLE_NAME;
+        Cursor cursor = db.rawQuery(select_all,null);
+
+        while(cursor.moveToNext()){
+
+            String id = cursor.getString(cursor.getColumnIndex(COL_ID));
+            String chapter = cursor.getString(cursor.getColumnIndex(COL_CHAPTER));
+            String category = cursor.getString(cursor.getColumnIndex(COL_CATEGORY));
+            String title = cursor.getString(cursor.getColumnIndex(COL_TITLE));
+            String body_kor = cursor.getString(cursor.getColumnIndex(COL_BODY_KOR));
+            String body_eng = cursor.getString(cursor.getColumnIndex(COL_BODY_ENG));
+
+            DataModel dataModel = new DataModel(id,chapter,category,title,body_kor,body_eng);
+            bibles.add(dataModel);
+        }
+
+        return bibles;
     }
 }
