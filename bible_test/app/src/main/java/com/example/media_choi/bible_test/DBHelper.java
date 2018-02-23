@@ -21,24 +21,32 @@ import java.util.ArrayList;
  */
 
 public class DBHelper extends SQLiteOpenHelper {
+
     private static final String FILE_NAME = "test.json";
     private static final String DB_NAME = "BIBLE";
     private static final int DB_VERSION = 1;
     private static final String TABLE_NAME = "BIBLE_TABLE";
     private static final String COL_ID = "ID";
-    private static final String COL_CHAPTER = "CHAPTER";
-    private static final String COL_CATEGORY = "CATEGORY";
+    private static final String COL_CHAPTER_KOR = "CHAPTER_KOR";
+    private static final String COL_CHAPTER_ENG = "CHAPTER_ENG";
+    private static final String COL_CATEGORY_KOR = "CATEGORY_KOR";
+    private static final String COL_CATEGORY_ENG = "CATEGORY_ENG";
     private static final String COL_BODY_KOR = "BODY_KOR";
     private static final String COL_BODY_ENG = "BODY_ENG";
-    private static final String COL_TITLE = "TITLE";
+    private static final String COL_TITLE_KOR = "TITLE_KOR";
+    private static final String COL_TITLE_ENG = "TITLE_ENG";
+
     private Resources mResources;
     private SQLiteDatabase db;
     ArrayList<DataModel> data;
     private static final String CREATE_QUERY = "CREATE TABLE " + TABLE_NAME + " (" +
             COL_ID + " TEXT, " +
-            COL_CHAPTER + " TEXT, " +
-            COL_CATEGORY + " TEXT, " +
-            COL_TITLE + " TEXT, " +
+            COL_CHAPTER_KOR + " TEXT, " +
+            COL_CHAPTER_ENG + " TEXT, " +
+            COL_CATEGORY_KOR + " TEXT, " +
+            COL_CATEGORY_ENG + " TEXT, " +
+            COL_TITLE_KOR + " TEXT, " +
+            COL_TITLE_ENG + " TEXT, " +
             COL_BODY_KOR + " TEXT, " +
             COL_BODY_ENG + " TEXT "+ ")";
 
@@ -86,9 +94,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //DB insert param
         final String DB_ID = "id";
-        final String DB_CHAPTER = "chapter";
-        final String DB_CATEGORY = "category";
-        final String DB_TITLE = "title";
+        final String DB_CHAPTER_KOR = "chapter_kor";
+        final String DB_CHAPTER_ENG = "chapter_eng";
+        final String DB_CATEGORY_KOR = "category_kor";
+        final String DB_CATEGORY_ENG = "category_eng";
+        final String DB_TITLE_KOR = "title_kor";
+        final String DB_TITLE_ENG = "title_eng";
         final String DB_BODY_KOR = "body_kor";
         final String DB_BODY_ENG = "body_eng";
 
@@ -105,26 +116,35 @@ public class DBHelper extends SQLiteOpenHelper {
 
             for(int i = 0; i < jsonArray.length(); i++){
                 String id;
-                String chapter;
-                String category;
-                String title;
+                String chapter_kor;
+                String chapter_eng;
+                String category_kor;
+                String category_eng;
+                String title_kor;
+                String title_eng;
                 String body_kor;
                 String body_eng;
 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 id = jsonObject.getString(DB_ID);
-                chapter = jsonObject.getString(DB_CHAPTER);
-                category = jsonObject.getString(DB_CATEGORY);
-                title = jsonObject.getString(DB_TITLE);
+                chapter_kor = jsonObject.getString(DB_CHAPTER_KOR);
+                chapter_eng = jsonObject.getString(DB_CHAPTER_ENG);
+                category_kor = jsonObject.getString(DB_CATEGORY_KOR);
+                category_eng = jsonObject.getString(DB_CATEGORY_ENG);
+                title_kor = jsonObject.getString(DB_TITLE_KOR);
+                title_eng = jsonObject.getString(DB_TITLE_ENG);
                 body_kor = jsonObject.getString(DB_BODY_KOR);
                 body_eng = jsonObject.getString(DB_BODY_ENG);
 
                 //insert DB
                 ContentValues values = new ContentValues();
                 values.put(COL_ID, id);
-                values.put(COL_CHAPTER, chapter);
-                values.put(COL_CATEGORY, category);
-                values.put(COL_TITLE, title);
+                values.put(COL_CHAPTER_KOR, chapter_kor);
+                values.put(COL_CHAPTER_ENG, chapter_eng);
+                values.put(COL_CATEGORY_KOR, category_kor);
+                values.put(COL_CATEGORY_ENG, category_eng);
+                values.put(COL_TITLE_KOR, title_kor);
+                values.put(COL_TITLE_ENG, title_eng);
                 values.put(COL_BODY_KOR, body_kor);
                 values.put(COL_BODY_ENG, body_eng);
 
@@ -149,13 +169,16 @@ public class DBHelper extends SQLiteOpenHelper {
         while(cursor.moveToNext()){
 
             String id = cursor.getString(cursor.getColumnIndex(COL_ID));
-            String chapter = cursor.getString(cursor.getColumnIndex(COL_CHAPTER));
-            String category = cursor.getString(cursor.getColumnIndex(COL_CATEGORY));
-            String title = cursor.getString(cursor.getColumnIndex(COL_TITLE));
+            String chapter_kor = cursor.getString(cursor.getColumnIndex(COL_CHAPTER_KOR));
+            String chapter_eng = cursor.getString(cursor.getColumnIndex(COL_CHAPTER_ENG));
+            String category_kor = cursor.getString(cursor.getColumnIndex(COL_CATEGORY_KOR));
+            String category_eng = cursor.getString(cursor.getColumnIndex(COL_CATEGORY_ENG));
+            String title_kor = cursor.getString(cursor.getColumnIndex(COL_TITLE_KOR));
+            String title_eng = cursor.getString(cursor.getColumnIndex(COL_TITLE_ENG));
             String body_kor = cursor.getString(cursor.getColumnIndex(COL_BODY_KOR));
             String body_eng = cursor.getString(cursor.getColumnIndex(COL_BODY_ENG));
 
-            DataModel dataModel = new DataModel(id,chapter,category,title,body_kor,body_eng);
+            DataModel dataModel = new DataModel(id,chapter_kor,chapter_eng,category_kor,category_eng,title_kor,title_eng,body_kor,body_eng);
             bibles.add(dataModel);
         }
 

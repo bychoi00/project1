@@ -11,38 +11,17 @@ import java.util.ArrayList;
  */
 
 public class DataModel {
-    public String getId() {
-        return id;
-    }
-
-    public String getChapter() {
-        return chapter;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getBody_kor() {
-        return body_kor;
-    }
-
-    public String getBody_eng() {
-        return body_eng;
-    }
-
 
     public static DataModel fromJson(JSONObject jsonObject) {
         DataModel d = new DataModel();
         try {
             d.id = jsonObject.getString("id");
-            d.chapter = jsonObject.getString("chapter");
-            d.category = jsonObject.getString("category");
-            d.title = jsonObject.getString("title");
+            d.chapter_kor = jsonObject.getString("chapter_kor");
+            d.chapter_eng = jsonObject.getString("chapter_eng");
+            d.category_kor = jsonObject.getString("category_kor");
+            d.category_eng = jsonObject.getString("category_eng");
+            d.title_kor = jsonObject.getString("title_kor");
+            d.title_eng = jsonObject.getString("title_eng");
             d.body_kor = jsonObject.getString("body_kor");
             d.body_eng = jsonObject.getString("body_eng");
         } catch (JSONException e) {
@@ -71,25 +50,102 @@ public class DataModel {
         return arrayList;
     }
 
-    public DataModel(String id, String chapter, String category, String title, String body_kor, String body_eng) {
-        this.id = id;
-        this.chapter = chapter;
-        this.category = category;
-        this.title = title;
-        this.body_kor = body_kor;
-        this.body_eng = body_eng;
-    }
-
     public DataModel()
     {
 
     }
 
+    public DataModel(String id, String chapter_kor, String chapter_eng, String category_kor, String category_eng, String title_kor, String title_eng, String body_kor, String body_eng) {
+        this.id = id;
+        this.chapter_kor = chapter_kor;
+        this.chapter_eng = chapter_eng;
+        this.category_kor = category_kor;
+        this.category_eng = category_eng;
+        this.title_kor = title_kor;
+        this.title_eng = title_eng;
+        this.body_kor = body_kor;
+        this.body_eng = body_eng;
+    }
+
     String id;
-    String chapter;
-    String category;
-    String title;
+    String chapter_kor;
+    String chapter_eng;
+    String category_kor;
+    String category_eng;
+    String title_kor;
+    String title_eng;
     String body_kor;
     String body_eng;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getChapter_kor() {
+        return chapter_kor;
+    }
+
+    public void setChapter_kor(String chapter_kor) {
+        this.chapter_kor = chapter_kor;
+    }
+
+    public String getChapter_eng() {
+        return chapter_eng;
+    }
+
+    public void setChapter_eng(String chapter_eng) {
+        this.chapter_eng = chapter_eng;
+    }
+
+    public String getCategory_kor() {
+        return category_kor;
+    }
+
+    public void setCategory_kor(String category_kor) {
+        this.category_kor = category_kor;
+    }
+
+    public String getCategory_eng() {
+        return category_eng;
+    }
+
+    public void setCategory_eng(String category_eng) {
+        this.category_eng = category_eng;
+    }
+
+    public String getTitle_kor() {
+        return title_kor;
+    }
+
+    public void setTitle_kor(String title_kor) {
+        this.title_kor = title_kor;
+    }
+
+    public String getTitle_eng() {
+        return title_eng;
+    }
+
+    public void setTitle_eng(String title_eng) {
+        this.title_eng = title_eng;
+    }
+
+    public String getBody_kor() {
+        return body_kor;
+    }
+
+    public void setBody_kor(String body_kor) {
+        this.body_kor = body_kor;
+    }
+
+    public String getBody_eng() {
+        return body_eng;
+    }
+
+    public void setBody_eng(String body_eng) {
+        this.body_eng = body_eng;
+    }
 }
