@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,14 +15,17 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    ProgressBar progressBar;
     Button buttonCheck;
     Button buttonChange;
+    TextView textPersent;
     TextView textCategory;
     TextView textTitle;
     TextView textBody;
     TextView textUnderTitle;
     TextView textChapter;
     LinearLayout myLayout;
+    LinearLayout successLayout;
     DBHelper mDbHelper;
     ArrayList<DataModel> bibles = new ArrayList<>();
     int count = 1;
@@ -40,7 +44,10 @@ public class MainActivity extends AppCompatActivity {
         textUnderTitle = (TextView) findViewById(R.id.textUnderTitle);
         buttonCheck = (Button) findViewById(R.id.buttonCheck);
         buttonChange = (Button) findViewById(R.id.buttonChange);
+        progressBar = (ProgressBar)findViewById(R.id.progressbar);
+        textPersent = (TextView)findViewById(R.id.textPersent);
         myLayout = (LinearLayout) findViewById(R.id.mylayout);
+        successLayout = (LinearLayout)findViewById(R.id.successLayout);
 
         //json Data Load , id를 로컬DB를 통해 저장시켜뒀다가 종료시점 이후 불러오기***************************************
         mDbHelper = new DBHelper(this);
@@ -52,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
         textBody.setText(bibles.get(0).body_kor);
         textChapter.setText(bibles.get(0).chapter_kor);
         textUnderTitle.setText(bibles.get(0).title_kor);
+
+        //progress bar
+        progressBar.setProgress(50);
 
         //이벤트
         // 체크버튼 누를 시
