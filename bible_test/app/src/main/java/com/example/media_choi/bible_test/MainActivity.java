@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         progressBar = (ProgressBar)findViewById(R.id.progressbar);
         textPersent = (TextView)findViewById(R.id.textPersent);
         myLayout = (LinearLayout) findViewById(R.id.mylayout);
-        successLayout = (LinearLayout)findViewById(R.id.successLayout);
 
         //json Data Load , id를 로컬DB를 통해 저장시켜뒀다가 종료시점 이후 불러오기***************************************
         mDbHelper = new DBHelper(this);

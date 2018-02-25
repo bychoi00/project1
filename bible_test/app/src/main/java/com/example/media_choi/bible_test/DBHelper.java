@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final String FILE_NAME = "test.json";
+    private static final String FILE_NAME = "bible.json";
     private static final String DB_NAME = "BIBLE";
     private static final int DB_VERSION = 1;
     private static final String TABLE_NAME = "BIBLE_TABLE";
