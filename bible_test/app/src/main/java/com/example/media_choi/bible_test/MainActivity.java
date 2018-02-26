@@ -24,8 +24,16 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout myLayout;
     DBHelper mDbHelper;
     ArrayList<DataModel> bibles = new ArrayList<>();
+    ArrayList<DataModel> bibles_parts = new ArrayList<>();
+
     int count = 1;
     int flag = 0;
+
+    static final String PART_A = "A";
+    static final String PART_B = "B";
+    static final String PART_C = "C";
+    static final String PART_D = "D";
+    static final String PART_E = "E";
 
 
     @Override
@@ -45,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         //json Data Load , id를 로컬DB를 통해 저장시켜뒀다가 종료시점 이후 불러오기***************************************
         mDbHelper = new DBHelper(this);
-        bibles = mDbHelper.getAllData(); //db에서 모든 파일 꺼내오기
+        bibles_parts = mDbHelper.getPartsData("A");
 
         //spinner 설정
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.number, android.R.layout.simple_spinner_item);
@@ -53,11 +61,11 @@ public class MainActivity extends AppCompatActivity {
         mySpinner.setAdapter(adapter);
 
         //초기화면 display , DB에 저장된 마지막 사용자화면 디스플레이
-        textCategory.setText(bibles.get(0).category_kor);
-        textTitle.setText(bibles.get(0).title_kor);
-        textBody.setText(bibles.get(0).body_kor);
-        textChapter.setText(bibles.get(0).chapter_kor);
-        textUnderTitle.setText(bibles.get(0).title_kor);
+        textCategory.setText(bibles_parts.get(0).category_kor);
+        textTitle.setText(bibles_parts.get(0).title_kor);
+        textBody.setText(bibles_parts.get(0).body_kor);
+        textChapter.setText(bibles_parts.get(0).chapter_kor);
+        textUnderTitle.setText(bibles_parts.get(0).title_kor);
 
 
         //이벤트
@@ -66,18 +74,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (flag == 1) {
-                    textCategory.setText(bibles.get(count - 1).category_eng);
-                    textTitle.setText(bibles.get(count - 1).title_eng);
-                    textBody.setText(bibles.get(count - 1).body_eng);
-                    textChapter.setText(bibles.get(count - 1).chapter_eng);
-                    textUnderTitle.setText(bibles.get(count - 1).title_eng);
+                    textCategory.setText(bibles_parts.get(count - 1).category_eng);
+                    textTitle.setText(bibles_parts.get(count - 1).title_eng);
+                    textBody.setText(bibles_parts.get(count - 1).body_eng);
+                    textChapter.setText(bibles_parts.get(count - 1).chapter_eng);
+                    textUnderTitle.setText(bibles_parts.get(count - 1).title_eng);
                     flag = 0;
                 } else if (flag == 0) {
-                    textCategory.setText(bibles.get(count - 1).category_kor);
-                    textTitle.setText(bibles.get(count - 1).title_kor);
-                    textBody.setText(bibles.get(count - 1).body_kor);
-                    textChapter.setText(bibles.get(count - 1).chapter_kor);
-                    textUnderTitle.setText(bibles.get(count - 1).title_kor);
+                    textCategory.setText(bibles_parts.get(count - 1).category_kor);
+                    textTitle.setText(bibles_parts.get(count - 1).title_kor);
+                    textBody.setText(bibles_parts.get(count - 1).body_kor);
+                    textChapter.setText(bibles_parts.get(count - 1).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(count - 1).title_kor);
                     flag = 1;
                 }
             }
@@ -88,19 +96,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //layout 클릭 시 마다 텍스트 변경 디스플레이
-                if (count == bibles.size()) {
-                    textCategory.setText(bibles.get(0).category_kor);
-                    textTitle.setText(bibles.get(0).title_kor);
-                    textBody.setText(bibles.get(0).body_kor);
-                    textChapter.setText(bibles.get(0).chapter_kor);
-                    textUnderTitle.setText(bibles.get(0).title_kor);
+                if (count == bibles_parts.size()) {
+                    textCategory.setText(bibles_parts.get(0).category_kor);
+                    textTitle.setText(bibles_parts.get(0).title_kor);
+                    textBody.setText(bibles_parts.get(0).body_kor);
+                    textChapter.setText(bibles_parts.get(0).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(0).title_kor);
                     count = 1;
                 } else {
-                    textCategory.setText(bibles.get(count).category_kor);
-                    textTitle.setText(bibles.get(count).title_kor);
-                    textBody.setText(bibles.get(count).body_kor);
-                    textChapter.setText(bibles.get(count).chapter_kor);
-                    textUnderTitle.setText(bibles.get(count).title_kor);
+                    textCategory.setText(bibles_parts.get(count).category_kor);
+                    textTitle.setText(bibles_parts.get(count).title_kor);
+                    textBody.setText(bibles_parts.get(count).body_kor);
+                    textChapter.setText(bibles_parts.get(count).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(count).title_kor);
                     count++;
                 }
 
@@ -110,7 +118,54 @@ public class MainActivity extends AppCompatActivity {
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 //파트별로 설정했을 때
+                Object i = parent.getItemAtPosition(position);
+                if (i.equals(PART_A)) {
+                    bibles_parts = mDbHelper.getPartsData(PART_A);
+
+                    textCategory.setText(bibles_parts.get(0).category_kor);
+                    textTitle.setText(bibles_parts.get(0).title_kor);
+                    textBody.setText(bibles_parts.get(0).body_kor);
+                    textChapter.setText(bibles_parts.get(0).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(0).title_kor);
+
+                } else if (i.equals(PART_B)) {
+                    bibles_parts = mDbHelper.getPartsData(PART_B);
+
+                    textCategory.setText(bibles_parts.get(0).category_kor);
+                    textTitle.setText(bibles_parts.get(0).title_kor);
+                    textBody.setText(bibles_parts.get(0).body_kor);
+                    textChapter.setText(bibles_parts.get(0).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(0).title_kor);
+
+                } else if (i.equals(PART_C)) {
+                    bibles_parts = mDbHelper.getPartsData(PART_C);
+
+                    textCategory.setText(bibles_parts.get(0).category_kor);
+                    textTitle.setText(bibles_parts.get(0).title_kor);
+                    textBody.setText(bibles_parts.get(0).body_kor);
+                    textChapter.setText(bibles_parts.get(0).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(0).title_kor);
+
+                } else if (i.equals(PART_D)) {
+                    bibles_parts = mDbHelper.getPartsData(PART_D);
+
+                    textCategory.setText(bibles_parts.get(0).category_kor);
+                    textTitle.setText(bibles_parts.get(0).title_kor);
+                    textBody.setText(bibles_parts.get(0).body_kor);
+                    textChapter.setText(bibles_parts.get(0).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(0).title_kor);
+
+                } else if (i.equals(PART_E)) {
+                    bibles_parts = mDbHelper.getPartsData(PART_E);
+
+                    textCategory.setText(bibles_parts.get(0).category_kor);
+                    textTitle.setText(bibles_parts.get(0).title_kor);
+                    textBody.setText(bibles_parts.get(0).body_kor);
+                    textChapter.setText(bibles_parts.get(0).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(0).title_kor);
+                }
             }
 
             @Override

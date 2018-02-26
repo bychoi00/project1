@@ -16,7 +16,7 @@ public class DataModel {
         DataModel d = new DataModel();
         try {
             d.id = jsonObject.getString("id");
-            d.group = jsonObject.getString("group");
+            d.parts = jsonObject.getString("parts");
             d.chapter_kor = jsonObject.getString("chapter_kor");
             d.chapter_eng = jsonObject.getString("chapter_eng");
             d.category_kor = jsonObject.getString("category_kor");
@@ -55,9 +55,9 @@ public class DataModel {
 
     }
 
-    public DataModel(String id, String group, String chapter_kor, String chapter_eng, String category_kor, String category_eng, String title_kor, String title_eng, String body_kor, String body_eng) {
+    public DataModel(String id, String parts, String chapter_kor, String chapter_eng, String category_kor, String category_eng, String title_kor, String title_eng, String body_kor, String body_eng) {
         this.id = id;
-        this.group = group;
+        this.parts = parts;
         this.chapter_kor = chapter_kor;
         this.chapter_eng = chapter_eng;
         this.category_kor = category_kor;
@@ -74,14 +74,6 @@ public class DataModel {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getGroup() {
-        return group;
-    }
-
-    public void setGroup(String group) {
-        this.group = group;
     }
 
     public String getChapter_kor() {
@@ -148,8 +140,16 @@ public class DataModel {
         this.body_eng = body_eng;
     }
 
+    public String getParts() {
+        return parts;
+    }
+
+    public void setParts(String parts) {
+        this.parts = parts;
+    }
+
     String id;
-    String group;
+    String parts;
     String chapter_kor;
     String chapter_eng;
     String category_kor;

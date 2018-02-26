@@ -2,7 +2,7 @@
   "Bible": [
     {
       "id": "A0101",
-      "group": "A",
+      "parts": "A",
       "chapter_kor": "테스트 챕터1-1",
       "chapter_eng": "TEST 테스트 챕터1-1",
       "category_kor": "테스트 카테고리1",
@@ -14,7 +14,7 @@
     },
     {
       "id": "A0102",
-      "group": "B",
+      "parts": "B",
       "chapter_kor": "테스트 챕터1-2",
       "chapter_eng": "TEST 테스트 챕터1-2",
       "category_kor": "테스트 카테고리1",
@@ -27,7 +27,7 @@
     },
     {
       "id": "A0201",
-      "group": "C",
+      "parts": "C",
       "chapter_kor": "테스트 챕터1-3",
       "chapter_eng": "TEST 테스트 챕터1-3",
       "category_kor": "테스트 카테고리2",
@@ -39,7 +39,7 @@
     },
     {
       "id": "A0202",
-      "group": "D",
+      "parts": "D",
       "chapter_kor": "테스트 챕터1-4",
       "chapter_eng": "TEST 테스트 챕터1-4",
       "category_kor": "테스트 카테고리2",

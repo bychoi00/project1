@@ -22,12 +22,12 @@ import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final String FILE_NAME = "test.json";
+    private static final String FILE_NAME = "bible.json";
     private static final String DB_NAME = "BIBLE";
     private static final int DB_VERSION = 1;
     private static final String TABLE_NAME = "BIBLE_TABLE";
     private static final String COL_ID = "ID";
-    private static final String COL_GROUP = "GROUP";
+    private static final String COL_PARTS = "PARTS";
     private static final String COL_CHAPTER_KOR = "CHAPTER_KOR";
     private static final String COL_CHAPTER_ENG = "CHAPTER_ENG";
     private static final String COL_CATEGORY_KOR = "CATEGORY_KOR";
@@ -42,7 +42,7 @@ public class DBHelper extends SQLiteOpenHelper {
     ArrayList<DataModel> data;
     private static final String CREATE_QUERY = "CREATE TABLE " + TABLE_NAME + " (" +
             COL_ID + " TEXT, " +
-            COL_GROUP + " TEXT, " +
+            COL_PARTS+ " TEXT, " +
             COL_CHAPTER_KOR + " TEXT, " +
             COL_CHAPTER_ENG + " TEXT, " +
             COL_CATEGORY_KOR + " TEXT, " +
@@ -95,7 +95,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //DB insert param
         final String DB_ID = "id";
-        final String DB_GROUP = "group";
+        final String DB_PARTS = "parts";
         final String DB_CHAPTER_KOR = "chapter_kor";
         final String DB_CHAPTER_ENG = "chapter_eng";
         final String DB_CATEGORY_KOR = "category_kor";
@@ -118,7 +118,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 String id;
-                String group;
+                String parts;
                 String chapter_kor;
                 String chapter_eng;
                 String category_kor;
@@ -130,7 +130,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 id = jsonObject.getString(DB_ID);
-                group = jsonObject.getString(DB_GROUP);
+                parts = jsonObject.getString(DB_PARTS);
                 chapter_kor = jsonObject.getString(DB_CHAPTER_KOR);
                 chapter_eng = jsonObject.getString(DB_CHAPTER_ENG);
                 category_kor = jsonObject.getString(DB_CATEGORY_KOR);
@@ -143,7 +143,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 //insert DB
                 ContentValues values = new ContentValues();
                 values.put(COL_ID, id);
-                values.put(COL_GROUP, group);
+                values.put(COL_PARTS, parts);
                 values.put(COL_CHAPTER_KOR, chapter_kor);
                 values.put(COL_CHAPTER_ENG, chapter_eng);
                 values.put(COL_CATEGORY_KOR, category_kor);
@@ -174,7 +174,7 @@ public class DBHelper extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
 
             String id = cursor.getString(cursor.getColumnIndex(COL_ID));
-            String group = cursor.getString(cursor.getColumnIndex(COL_GROUP));
+            String parts = cursor.getString(cursor.getColumnIndex(COL_PARTS));
             String chapter_kor = cursor.getString(cursor.getColumnIndex(COL_CHAPTER_KOR));
             String chapter_eng = cursor.getString(cursor.getColumnIndex(COL_CHAPTER_ENG));
             String category_kor = cursor.getString(cursor.getColumnIndex(COL_CATEGORY_KOR));
@@ -184,7 +184,35 @@ public class DBHelper extends SQLiteOpenHelper {
             String body_kor = cursor.getString(cursor.getColumnIndex(COL_BODY_KOR));
             String body_eng = cursor.getString(cursor.getColumnIndex(COL_BODY_ENG));
 
-            DataModel dataModel = new DataModel(id, group, chapter_kor, chapter_eng, category_kor, category_eng, title_kor, title_eng, body_kor, body_eng);
+            DataModel dataModel = new DataModel(id, parts, chapter_kor, chapter_eng, category_kor, category_eng, title_kor, title_eng, body_kor, body_eng);
+            bibles.add(dataModel);
+        }
+
+        return bibles;
+    }
+
+    public ArrayList<DataModel> getPartsData(String Parts){
+        ArrayList<DataModel> bibles = new ArrayList<>();
+        db = this.getReadableDatabase();
+
+        //Query 문
+        String select_parts = "Select * from " + TABLE_NAME + " Where PARTS = " + "'"+Parts+"'";
+        Cursor cursor = db.rawQuery(select_parts, null);
+
+        while (cursor.moveToNext()) {
+
+            String id = cursor.getString(cursor.getColumnIndex(COL_ID));
+            String parts = cursor.getString(cursor.getColumnIndex(COL_PARTS));
+            String chapter_kor = cursor.getString(cursor.getColumnIndex(COL_CHAPTER_KOR));
+            String chapter_eng = cursor.getString(cursor.getColumnIndex(COL_CHAPTER_ENG));
+            String category_kor = cursor.getString(cursor.getColumnIndex(COL_CATEGORY_KOR));
+            String category_eng = cursor.getString(cursor.getColumnIndex(COL_CATEGORY_ENG));
+            String title_kor = cursor.getString(cursor.getColumnIndex(COL_TITLE_KOR));
+            String title_eng = cursor.getString(cursor.getColumnIndex(COL_TITLE_ENG));
+            String body_kor = cursor.getString(cursor.getColumnIndex(COL_BODY_KOR));
+            String body_eng = cursor.getString(cursor.getColumnIndex(COL_BODY_ENG));
+
+            DataModel dataModel = new DataModel(id, parts, chapter_kor, chapter_eng, category_kor, category_eng, title_kor, title_eng, body_kor, body_eng);
             bibles.add(dataModel);
         }
 
