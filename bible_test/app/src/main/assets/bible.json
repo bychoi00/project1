@@ -2,6 +2,7 @@
   "Bible":[
     {
       "id":"A0101",
+      "group":"A",
       "chapter_kor":"A-1 새로운 삶",
       "category_kor":"중심되신 그리스도",
       "title_kor":"고린도후서 5:17",
@@ -13,6 +14,7 @@
     },
     {
       "id":"A0102",
+      "group":"A",
       "chapter_kor":"A-2 새로운 삶",
       "category_kor":"중심되신 그리스도",
       "title_kor":"갈라디아서 2:20",
@@ -24,6 +26,7 @@
     },
     {
       "id":"A0201",
+      "group":"A",
       "chapter_kor":"A-3 새로운 삶",
       "category_kor":"그리스도께 순종",
       "title_kor":"로마서 12:1",
@@ -35,6 +38,7 @@
     },
     {
       "id":"A0202",
+      "group":"A",
       "chapter_kor":"A-4 새로운 삶",
       "category_kor":"그리스도께 순종",
       "title_kor":"요한복음 14:21",
@@ -46,6 +50,7 @@
     },
     {
       "id":"A0301",
+      "group":"A",
       "chapter_kor":"A-5 새로운 삶",
       "category_kor":"말 씀",
       "title_kor":"디모데후서 3:16",
@@ -57,6 +62,7 @@
     },
     {
       "id":"A0302",
+      "group":"A",
       "chapter_kor":"A-6 새로운 삶",
       "category_kor":"말 씀",
       "title_kor":"여호수아 1:8",
@@ -68,6 +74,7 @@
     },
     {
       "id":"A0401",
+      "group":"A",
       "chapter_kor":"A-7 새로운 삶",
       "category_kor":"기 도",
       "title_kor":"요한복음 15:7",
@@ -79,6 +86,7 @@
     },
     {
       "id":"A0402",
+      "group":"A",
       "chapter_kor":"A-8 새로운 삶",
       "category_kor":"기 도",
       "title_kor":"빌립보서 4:6-7",
@@ -90,6 +98,7 @@
     },
     {
       "id":"A0501",
+      "group":"A",
       "chapter_kor":"A-9 새로운 삶",
       "category_kor":"교 제",
       "title_kor":"마태복음 18:20 ",
@@ -101,6 +110,7 @@
     },
     {
       "id":"A0502",
+      "group":"A",
       "chapter_kor":"A-10 새로운 삶",
       "category_kor":"교  제",
       "title_kor":"히브리서 10:24.25",
@@ -112,6 +122,7 @@
     },
     {
       "id":"A0601",
+      "group":"A",
       "chapter_kor":"A-11 새로운 삶",
       "category_kor":"증  거",
       "title_kor":"마태복음 4:19",
@@ -123,6 +134,7 @@
     },
     {
       "id":"A0602",
+      "group":"A",
       "chapter_kor":"A-12 새로운 삶",
       "category_kor":"증  거",
       "title_kor":"로마서 1:16 ",
@@ -134,6 +146,7 @@
     },
     {
       "id":"B0101",
+      "group":"B",
       "chapter_kor":"B-1 그리스도를 전파함",
       "category_kor":"모든 사람이 죄를 범함",
       "title_kor":"로마서 3:23",
@@ -145,6 +158,7 @@
     },
     {
       "id":"B0102",
+      "group":"B",
       "chapter_kor":"B-2 그리스도를 전파함",
       "category_kor":"모든 사람이 죄를 범함",
       "title_kor":"이사야 53:6",
@@ -156,6 +170,7 @@
     },
     {
       "id":"B0201",
+      "group":"B",
       "chapter_kor":"B-3 그리스도를 전파함",
       "category_kor":"죄의 형벌",
       "title_kor":"로마서 6:23",
@@ -167,6 +182,7 @@
     },
     {
       "id":"B0202",
+      "group":"B",
       "chapter_kor":"B-4 그리스도를 전파함",
       "category_kor":"죄의 형벌",
       "title_kor":"히브리서 9:27",
@@ -178,6 +194,7 @@
     },
     {
       "id":"B0301",
+      "group":"B",
       "chapter_kor":"B-5 그리스도를 전파함",
       "category_kor":"그리스도가 형벌을 받음",
       "title_kor":"로마서 5:8 ",
@@ -189,6 +206,7 @@
     },
     {
       "id":"B0302",
+      "group":"B",
       "chapter_kor":"B-6 그리스도를 전파함",
       "category_kor":"그리스도가 형벌을 받음",
       "title_kor":"베드로전서 3:18",
@@ -200,6 +218,7 @@
     },
     {
       "id":"B0401",
+      "group":"B",
       "chapter_kor":"B-7 그리스도를 전파함",
       "category_kor":"선행으로 구원받지 못함",
       "title_kor":"에베소서 2:8,9",
@@ -211,6 +230,7 @@
     },
     {
       "id":"B0402",
+      "group":"B",
       "chapter_kor":"B-8 그리스도를 전파함",
       "category_kor":"선행으로 구원받지 못함",
       "title_kor":"디도서 3:5",
@@ -222,6 +242,7 @@
     },
     {
       "id":"B0501",
+      "group":"B",
       "chapter_kor":"B-9 그리스도를 전파함",
       "category_kor":"그리스도를 모셔야 함",
       "title_kor":"요한복음 1:12",
@@ -233,6 +254,7 @@
     },
     {
       "id":"B0502",
+      "group":"B",
       "chapter_kor":"B-10 그리스도를 전파함",
       "category_kor":"그리스도를 모셔야 함",
       "title_kor":"요한계시록 3:20",
@@ -244,6 +266,7 @@
     },
     {
       "id":"B0601",
+      "group":"B",
       "chapter_kor":"B-11 그리스도를 전파함",
       "category_kor":"구원의 확신",
       "title_kor":"요한일서 5:13",
@@ -255,6 +278,7 @@
     },
     {
       "id":"B0602",
+      "group":"B",
       "chapter_kor":"B-12 그리스도를 전파함",
       "category_kor":"구원의 확신",
       "title_kor":"요한복음 5:24",
@@ -266,6 +290,7 @@
     },
     {
       "id":"C0101",
+      "group":"C",
       "chapter_kor":"C-1 하나님을 의뢰함",
       "category_kor":"성  령",
       "title_kor":"고린도전서 3:16 ",
@@ -277,6 +302,7 @@
     },
     {
       "id":"C0102",
+      "group":"C",
       "chapter_kor":"C-2 하나님을 의뢰함",
       "category_kor":"성  령",
       "title_kor":"고린도전서 2:12",
@@ -288,6 +314,7 @@
     },
     {
       "id":"C0201",
+      "group":"C",
       "chapter_kor":"C-3 하나님을 의뢰함",
       "category_kor":"능  력",
       "title_kor":"이사야 41:10 ",
@@ -299,6 +326,7 @@
     },
     {
       "id":"C0202",
+      "group":"C",
       "chapter_kor":"C-4 하나님을 의뢰함",
       "category_kor":"능  력",
       "title_kor":"빌립보서 4:13",
@@ -310,6 +338,7 @@
     },
     {
       "id":"C0301",
+      "group":"C",
       "chapter_kor":"C-5 하나님을 의뢰함",
       "category_kor":"성  실",
       "title_kor":"예레미야애가 2:22,23",
@@ -321,6 +350,7 @@
       },
     {
       "id":"C0302",
+      "group":"C",
       "chapter_kor":"C-6 하나님을 의뢰함",
       "category_kor":"성  실",
       "title_kor":"민수기 23:19 ",
@@ -332,6 +362,7 @@
     },
     {
       "id":"C0401",
+      "group":"C",
       "chapter_kor":"C-7 하나님을 의뢰함",
       "category_kor":"평  안",
       "title_kor":"이사야 26:3",
@@ -343,6 +374,7 @@
     },
     {
       "id":"C0402",
+      "group":"C",
       "chapter_kor":"C-8 하나님을 의뢰함",
       "category_kor":"평  안",
       "title_kor":"베드로전서 5:7",
@@ -354,6 +386,7 @@
     },
     {
       "id":"C0501",
+      "group":"C",
       "chapter_kor":"C-9 하나님을 의뢰함",
       "category_kor":"공  급",
       "title_kor":"로마서 8:32",
@@ -365,6 +398,7 @@
     },
     {
       "id":"C0502",
+      "group":"C",
       "chapter_kor":"C-10 하나님을 의뢰함",
       "category_kor":"공  급",
       "title_kor":"빌립보서 4:19",
@@ -376,6 +410,7 @@
     },
     {
       "id":"C0601",
+      "group":"C",
       "chapter_kor":"C-11 하나님을 의뢰함",
       "category_kor":"유혹에서 도우심",
       "title_kor":"히브리서 2:18",
@@ -387,6 +422,7 @@
     },
     {
       "id":"C0602",
+      "group":"C",
       "chapter_kor":"C-12 하나님을 의뢰함",
       "category_kor":"유혹에서 도우심",
       "title_kor":"시편 119:9,11",
@@ -398,6 +434,7 @@
     },
     {
       "id":"D0101",
+      "group":"D",
       "chapter_kor":"D-1 그리스도 제자의 자격",
       "category_kor":"그리스도를 첫자리에 모심",
       "title_kor":"마태복음 6:33",
@@ -409,6 +446,7 @@
     },
     {
       "id":"D0102",
+      "group":"D",
       "chapter_kor":"D-2 그리스도 제자의 자격",
       "category_kor":"그리스도를 첫자리에 모심",
       "title_kor":"누가복음 9:23",
@@ -420,6 +458,7 @@
     },
     {
       "id":"D0201",
+      "group":"D",
       "chapter_kor":"D-3 그리스도 제자의 자격",
       "category_kor":"죄에서 떠남",
       "title_kor":"요한일서 2:15,16 ",
@@ -431,6 +470,7 @@
     },
     {
       "id":"D0202",
+      "group":"D",
       "chapter_kor":"D-4 그리스도 제자의 자격",
       "category_kor":"죄에서 떠남",
       "title_kor":"로마서 12:2",
@@ -442,6 +482,7 @@
     },
     {
       "id":"D0301",
+      "group":"D",
       "chapter_kor":"D-5 그리스도 제자의 자격",
       "category_kor":"견고함",
       "title_kor":"고린도전서 15:58",
@@ -453,6 +494,7 @@
     },
     {
       "id":"D0302",
+      "group":"D",
       "chapter_kor":"D-6 그리스도 제자의 자격",
       "category_kor":"견고함",
       "title_kor":"히브리서 12:3",
@@ -464,6 +506,7 @@
     },
     {
       "id":"D0401",
+      "group":"D",
       "chapter_kor":"D-7 그리스도 제자의 자격",
       "category_kor":"다른 사람을 섬김",
       "title_kor":"마가복음 10:45",
@@ -475,6 +518,7 @@
     },
     {
       "id":"D0402",
+      "group":"D",
       "chapter_kor":"D-8 그리스도 제자의 자격",
       "category_kor":"다른 사람을 섬김",
       "title_kor":"잠언 3:9,10",
@@ -487,6 +531,7 @@
     },
     {
       "id":"D0501",
+      "group":"D",
       "chapter_kor":"D-9 그리스도 제자의 자격",
       "category_kor":"후히 드릴 것",
       "title_kor":"잠언 3:9,10",
@@ -498,6 +543,7 @@
     },
     {
       "id":"D0502",
+      "group":"D",
       "chapter_kor":"D-10 그리스도 제자의 자격",
       "category_kor":"후히 드릴 것",
       "title_kor":"고린도후서 9:6,7",
@@ -509,6 +555,7 @@
     },
     {
       "id":"D0601",
+      "group":"D",
       "chapter_kor":"D-11 그리스도 제자의 자격",
       "category_kor":"세계 비전",
       "title_kor":"사도행전 1:8",
@@ -520,6 +567,7 @@
     },
     {
       "id":"D0602",
+      "group":"D",
       "chapter_kor":"D-12 그리스도 제자의 자격",
       "category_kor":"세계 비전",
       "title_kor":"마태복음 28:19,20",
@@ -531,6 +579,7 @@
     },
     {
       "id":"E0101",
+      "group":"E",
       "chapter_kor":"E-1 그리스도를 닮아감",
       "category_kor":"사  랑",
       "title_kor":"요한복음 13:34,35",
@@ -542,6 +591,7 @@
     },
     {
       "id":"E0102",
+      "group":"E",
       "chapter_kor":"E-2 그리스도를 닮아감",
       "category_kor":"사  랑",
       "title_kor":"요한일서 3:18",
@@ -553,6 +603,7 @@
     },
     {
       "id":"E0201",
+      "group":"E",
       "chapter_kor":"E-3 그리스도를 닮아감",
       "category_kor":"겸  손",
       "title_kor":"빌립보서 2;3,4",
@@ -564,6 +615,7 @@
     },
     {
       "id":"E0202",
+      "group":"E",
       "chapter_kor":"E-4 그리스도를 닮아감",
       "category_kor":"겸  손",
       "title_kor":"베드로전서 5:5,6",
@@ -575,6 +627,7 @@
     },
     {
       "id":"E0301",
+      "group":"E",
       "chapter_kor":"E-5 그리스도를 닮아감",
       "category_kor":"순  결",
       "title_kor":"에베소서 5:3",
@@ -586,6 +639,7 @@
     },
     {
       "id":"E0302",
+      "group":"E",
       "chapter_kor":"E-6 그리스도를 닮아감",
       "category_kor":"순  결",
       "title_kor":"베드로전서 2:11",
@@ -597,6 +651,7 @@
     },
     {
       "id":"E0401",
+      "group":"E",
       "chapter_kor":"E-7 그리스도를 닮아감",
       "category_kor":"정  직",
       "title_kor":"레위기 19:11",
@@ -608,6 +663,7 @@
     },
     {
       "id":"E0402",
+      "group":"E",
       "chapter_kor":"E-8 그리스도를 닮아감",
       "category_kor":"정  직",
       "title_kor":"사도행전 24:16",
@@ -619,6 +675,7 @@
     },
     {
       "id":"E0501",
+      "group":"E",
       "chapter_kor":"E-9 그리스도를 닮아감",
       "category_kor":"믿  음",
       "title_kor":"히브리서 11:6",
@@ -630,6 +687,7 @@
     },
     {
       "id":"E0502",
+      "group":"E",
       "chapter_kor":"E-10 그리스도를 닮아감",
       "category_kor":"믿  음",
       "title_kor":"로마서 4:20,21",
@@ -641,6 +699,7 @@
     },
     {
       "id":"E0601",
+      "group":"E",
       "chapter_kor":"E-11 그리스도를 닮아감",
       "category_kor":"선  행",
       "title_kor":"갈라디아서 6:9,10",
@@ -652,6 +711,7 @@
     },
     {
       "id":"E0602",
+      "group":"E",
       "chapter_kor":"E-12 그리스도를 닮아감",
       "category_kor":"선  행",
       "title_kor":"마태복음 5:16",

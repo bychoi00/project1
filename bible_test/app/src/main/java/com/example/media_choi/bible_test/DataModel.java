@@ -16,6 +16,7 @@ public class DataModel {
         DataModel d = new DataModel();
         try {
             d.id = jsonObject.getString("id");
+            d.group = jsonObject.getString("group");
             d.chapter_kor = jsonObject.getString("chapter_kor");
             d.chapter_eng = jsonObject.getString("chapter_eng");
             d.category_kor = jsonObject.getString("category_kor");
@@ -28,35 +29,35 @@ public class DataModel {
             e.printStackTrace();
             return null;
         }
-        return  d;
+        return d;
     }
 
-    public static ArrayList<DataModel> fromJson(JSONArray jsonArray){
+    public static ArrayList<DataModel> fromJson(JSONArray jsonArray) {
         JSONObject jsonObject;
         ArrayList<DataModel> arrayList = new ArrayList<DataModel>(jsonArray.length());
-        for(int i =0 ; i < jsonArray.length(); i++){
-            try{
+        for (int i = 0; i < jsonArray.length(); i++) {
+            try {
                 jsonObject = jsonArray.getJSONObject(i);
-            }catch (JSONException e){
+            } catch (JSONException e) {
                 e.printStackTrace();
                 continue;
             }
 
             DataModel data = DataModel.fromJson(jsonObject);
-            if(data !=null){
+            if (data != null) {
                 arrayList.add(data);
             }
         }
         return arrayList;
     }
 
-    public DataModel()
-    {
+    public DataModel() {
 
     }
 
-    public DataModel(String id, String chapter_kor, String chapter_eng, String category_kor, String category_eng, String title_kor, String title_eng, String body_kor, String body_eng) {
+    public DataModel(String id, String group, String chapter_kor, String chapter_eng, String category_kor, String category_eng, String title_kor, String title_eng, String body_kor, String body_eng) {
         this.id = id;
+        this.group = group;
         this.chapter_kor = chapter_kor;
         this.chapter_eng = chapter_eng;
         this.category_kor = category_kor;
@@ -67,22 +68,20 @@ public class DataModel {
         this.body_eng = body_eng;
     }
 
-    String id;
-    String chapter_kor;
-    String chapter_eng;
-    String category_kor;
-    String category_eng;
-    String title_kor;
-    String title_eng;
-    String body_kor;
-    String body_eng;
-
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
     }
 
     public String getChapter_kor() {
@@ -148,4 +147,16 @@ public class DataModel {
     public void setBody_eng(String body_eng) {
         this.body_eng = body_eng;
     }
+
+    String id;
+    String group;
+    String chapter_kor;
+    String chapter_eng;
+    String category_kor;
+    String category_eng;
+    String title_kor;
+    String title_eng;
+    String body_kor;
+    String body_eng;
+
 }

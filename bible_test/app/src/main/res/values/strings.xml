@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">bible_test</string>
+
+    <string-array name="number">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+    </string-array>
 </resources>
