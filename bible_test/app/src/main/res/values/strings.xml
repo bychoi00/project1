@@ -2,10 +2,10 @@
     <string name="app_name">bible_test</string>
 
     <string-array name="number">
-        <item>A</item>
-        <item>B</item>
-        <item>C</item>
-        <item>D</item>
-        <item>E</item>
+        <item>A.새로운 삶</item>
+        <item>B.그리스도를 전파함</item>
+        <item>C.하나님을 의뢰함</item>
+        <item>D.그리스도 제자의 자격</item>
+        <item>E.그리스도를 닮아 감</item>
     </string-array>
 </resources>

@@ -2,13 +2,17 @@ package com.example.media_choi.bible_test;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -29,12 +33,11 @@ public class MainActivity extends AppCompatActivity {
     int count = 1;
     int flag = 0;
 
-    static final String PART_A = "A";
-    static final String PART_B = "B";
-    static final String PART_C = "C";
-    static final String PART_D = "D";
-    static final String PART_E = "E";
-
+    static final String PART_A = "A.새로운 삶";
+    static final String PART_B = "B.그리스도를 전파함";
+    static final String PART_C = "C.하나님을 의뢰함";
+    static final String PART_D = "D.그리스도 제자의 자격";
+    static final String PART_E = "E.그리스도를 닮아 감";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +54,10 @@ public class MainActivity extends AppCompatActivity {
         buttonChange = (Button) findViewById(R.id.buttonChange);
         myLayout = (LinearLayout) findViewById(R.id.myLayout);
 
+
         //json Data Load , id를 로컬DB를 통해 저장시켜뒀다가 종료시점 이후 불러오기***************************************
         mDbHelper = new DBHelper(this);
-        bibles_parts = mDbHelper.getPartsData("A");
+        bibles_parts = mDbHelper.getPartsData(PART_A);
 
         //spinner 설정
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.number, android.R.layout.simple_spinner_item);
@@ -173,6 +177,5 @@ public class MainActivity extends AppCompatActivity {
                 //아무것도 설정하지 않았을 때
             }
         });
-
     }
 }
