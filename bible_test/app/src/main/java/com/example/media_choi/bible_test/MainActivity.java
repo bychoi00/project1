@@ -14,26 +14,27 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Spinner mySpinner;
-    Button buttonChange;
-    TextView textCategory;
-    TextView textTitle;
-    TextView textBody;
-    TextView textUnderTitle;
-    TextView textChapter;
-    LinearLayout myLayout;
-    DBHelper mDbHelper;
-    ArrayList<DataModel> bibles = new ArrayList<>();
-    ArrayList<DataModel> bibles_parts = new ArrayList<>();
+    private Spinner mySpinner;
+    private Button buttonChange;
+    private TextView textCategory;
+    private TextView textTitle;
+    private TextView textBody;
+    private TextView textUnderTitle;
+    private TextView textChapter;
+    private LinearLayout myLayout;
+    private DBHelper mDbHelper;
+    private ArrayList<DataModel> bibles_parts = new ArrayList<>();
 
-    int count = 0;
-    int flag = 1;
+    //페이지전환 및 한영플래그
+    private int count = 0;
+    private int flag = 1;
 
-    static final String PART_A = "A.새로운 삶";
-    static final String PART_B = "B.그리스도를 전파함";
-    static final String PART_C = "C.하나님을 의뢰함";
-    static final String PART_D = "D.그리스도 제자의 자격";
-    static final String PART_E = "E.그리스도를 닮아 감";
+    //파트 목차
+    private static final String PART_A = "A.새로운 삶";
+    private static final String PART_B = "B.그리스도를 전파함";
+    private static final String PART_C = "C.하나님을 의뢰함";
+    private static final String PART_D = "D.그리스도 제자의 자격";
+    private static final String PART_E = "E.그리스도를 닮아 감";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +52,16 @@ public class MainActivity extends AppCompatActivity {
         myLayout = (LinearLayout) findViewById(R.id.myLayout);
 
 
-        //json Data Load , id를 로컬DB를 통해 저장시켜뒀다가 종료시점 이후 불러오기***************************************
+        //json Data Load , DB 생성자***************************************
         mDbHelper = new DBHelper(this);
         bibles_parts = mDbHelper.getPartsData(PART_A);
 
-        //spinner 설정
+        //spinner setting
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.number, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(adapter);
 
-        //초기화면 display , DB에 저장된 마지막 사용자화면 디스플레이
+        //초기화면 display
         textCategory.setText(bibles_parts.get(0).category_kor);
         textTitle.setText(bibles_parts.get(0).title_kor);
         textBody.setText(bibles_parts.get(0).body_kor);
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //레이아웃 슬라이드 터치 시 이벤트
         myLayout.setOnTouchListener(new OnSwipeTouchListener(this) {
             public void onSwipeTop() {
             }
@@ -138,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Spinner 아이템 클릭 시
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
