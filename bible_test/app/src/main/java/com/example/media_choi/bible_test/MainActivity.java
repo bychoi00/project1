@@ -2,17 +2,13 @@ package com.example.media_choi.bible_test;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -30,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<DataModel> bibles = new ArrayList<>();
     ArrayList<DataModel> bibles_parts = new ArrayList<>();
 
-    int count = 1;
+    int count = 0;
     int flag = 0;
 
     static final String PART_A = "A.새로운 삶";
@@ -71,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         textChapter.setText(bibles_parts.get(0).chapter_kor);
         textUnderTitle.setText(bibles_parts.get(0).title_kor);
 
-
         //이벤트
         // 한/영 버튼 누를 시
         buttonChange.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +87,49 @@ public class MainActivity extends AppCompatActivity {
                     textUnderTitle.setText(bibles_parts.get(count - 1).title_kor);
                     flag = 1;
                 }
+            }
+        });
+
+        myLayout.setOnTouchListener(new OnSwipeTouchListener(this) {
+            public void onSwipeTop() {
+            }
+            public void onSwipeRight() {
+                //layout 클릭 시 마다 텍스트 변경 디스플레이
+                if (count == 0) {
+                    textCategory.setText(bibles_parts.get(bibles_parts.size() - 1).category_kor);
+                    textTitle.setText(bibles_parts.get(bibles_parts.size() - 1).title_kor);
+                    textBody.setText(bibles_parts.get(bibles_parts.size() - 1).body_kor);
+                    textChapter.setText(bibles_parts.get(bibles_parts.size() - 1).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(bibles_parts.size() - 1).title_kor);
+                    count = bibles_parts.size()-1;
+                } else {
+                    count--;
+                    textCategory.setText(bibles_parts.get(count).category_kor);
+                    textTitle.setText(bibles_parts.get(count).title_kor);
+                    textBody.setText(bibles_parts.get(count).body_kor);
+                    textChapter.setText(bibles_parts.get(count).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(count).title_kor);
+                }
+            }
+            public void onSwipeLeft() {
+                //layout 클릭 시 마다 텍스트 변경 디스플레이
+                if ((count + 1) == bibles_parts.size()) {
+                    textCategory.setText(bibles_parts.get(0).category_kor);
+                    textTitle.setText(bibles_parts.get(0).title_kor);
+                    textBody.setText(bibles_parts.get(0).body_kor);
+                    textChapter.setText(bibles_parts.get(0).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(0).title_kor);
+                    count = 0;
+                } else {
+                    count++;
+                    textCategory.setText(bibles_parts.get(count).category_kor);
+                    textTitle.setText(bibles_parts.get(count).title_kor);
+                    textBody.setText(bibles_parts.get(count).body_kor);
+                    textChapter.setText(bibles_parts.get(count).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(count).title_kor);
+                }
+            }
+            public void onSwipeBottom() {
             }
         });
 
@@ -119,6 +157,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -127,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
                 Object i = parent.getItemAtPosition(position);
                 if (i.equals(PART_A)) {
                     bibles_parts = mDbHelper.getPartsData(PART_A);
+                    count=0;
 
                     textCategory.setText(bibles_parts.get(0).category_kor);
                     textTitle.setText(bibles_parts.get(0).title_kor);
@@ -136,6 +178,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else if (i.equals(PART_B)) {
                     bibles_parts = mDbHelper.getPartsData(PART_B);
+                    count=0;
 
                     textCategory.setText(bibles_parts.get(0).category_kor);
                     textTitle.setText(bibles_parts.get(0).title_kor);
@@ -145,6 +188,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else if (i.equals(PART_C)) {
                     bibles_parts = mDbHelper.getPartsData(PART_C);
+                    count=0;
 
                     textCategory.setText(bibles_parts.get(0).category_kor);
                     textTitle.setText(bibles_parts.get(0).title_kor);
@@ -154,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else if (i.equals(PART_D)) {
                     bibles_parts = mDbHelper.getPartsData(PART_D);
+                    count=0;
 
                     textCategory.setText(bibles_parts.get(0).category_kor);
                     textTitle.setText(bibles_parts.get(0).title_kor);
@@ -163,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else if (i.equals(PART_E)) {
                     bibles_parts = mDbHelper.getPartsData(PART_E);
+                    count=0;
 
                     textCategory.setText(bibles_parts.get(0).category_kor);
                     textTitle.setText(bibles_parts.get(0).title_kor);
