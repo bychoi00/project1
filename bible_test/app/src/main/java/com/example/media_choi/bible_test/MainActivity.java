@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<DataModel> bibles_parts = new ArrayList<>();
 
     int count = 0;
-    int flag = 0;
+    int flag = 1;
 
     static final String PART_A = "A.새로운 삶";
     static final String PART_B = "B.그리스도를 전파함";
@@ -73,18 +73,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (flag == 1) {
-                    textCategory.setText(bibles_parts.get(count - 1).category_eng);
-                    textTitle.setText(bibles_parts.get(count - 1).title_eng);
-                    textBody.setText(bibles_parts.get(count - 1).body_eng);
-                    textChapter.setText(bibles_parts.get(count - 1).chapter_eng);
-                    textUnderTitle.setText(bibles_parts.get(count - 1).title_eng);
+                    textCategory.setText(bibles_parts.get(count).category_eng);
+                    textTitle.setText(bibles_parts.get(count).title_eng);
+                    textBody.setText(bibles_parts.get(count).body_eng);
+                    textChapter.setText(bibles_parts.get(count).chapter_eng);
+                    textUnderTitle.setText(bibles_parts.get(count).title_eng);
                     flag = 0;
                 } else if (flag == 0) {
-                    textCategory.setText(bibles_parts.get(count - 1).category_kor);
-                    textTitle.setText(bibles_parts.get(count - 1).title_kor);
-                    textBody.setText(bibles_parts.get(count - 1).body_kor);
-                    textChapter.setText(bibles_parts.get(count - 1).chapter_kor);
-                    textUnderTitle.setText(bibles_parts.get(count - 1).title_kor);
+                    textCategory.setText(bibles_parts.get(count).category_kor);
+                    textTitle.setText(bibles_parts.get(count).title_kor);
+                    textBody.setText(bibles_parts.get(count).body_kor);
+                    textChapter.setText(bibles_parts.get(count).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(count).title_kor);
                     flag = 1;
                 }
             }
@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
                     textChapter.setText(bibles_parts.get(bibles_parts.size() - 1).chapter_kor);
                     textUnderTitle.setText(bibles_parts.get(bibles_parts.size() - 1).title_kor);
                     count = bibles_parts.size()-1;
+                    flag = 1;
                 } else {
                     count--;
                     textCategory.setText(bibles_parts.get(count).category_kor);
@@ -109,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                     textBody.setText(bibles_parts.get(count).body_kor);
                     textChapter.setText(bibles_parts.get(count).chapter_kor);
                     textUnderTitle.setText(bibles_parts.get(count).title_kor);
+                    flag = 1;
                 }
             }
             public void onSwipeLeft() {
@@ -120,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
                     textChapter.setText(bibles_parts.get(0).chapter_kor);
                     textUnderTitle.setText(bibles_parts.get(0).title_kor);
                     count = 0;
+                    flag = 1;
+
                 } else {
                     count++;
                     textCategory.setText(bibles_parts.get(count).category_kor);
@@ -127,38 +131,12 @@ public class MainActivity extends AppCompatActivity {
                     textBody.setText(bibles_parts.get(count).body_kor);
                     textChapter.setText(bibles_parts.get(count).chapter_kor);
                     textUnderTitle.setText(bibles_parts.get(count).title_kor);
+                    flag = 1;
                 }
             }
             public void onSwipeBottom() {
             }
         });
-
-        //레이아웃 클릭 시 애니메이션활용해서 페이지 넘기는 식으로 다음절 표시
-        myLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //layout 클릭 시 마다 텍스트 변경 디스플레이
-                if (count == bibles_parts.size()) {
-                    textCategory.setText(bibles_parts.get(0).category_kor);
-                    textTitle.setText(bibles_parts.get(0).title_kor);
-                    textBody.setText(bibles_parts.get(0).body_kor);
-                    textChapter.setText(bibles_parts.get(0).chapter_kor);
-                    textUnderTitle.setText(bibles_parts.get(0).title_kor);
-                    count = 1;
-                } else {
-                    textCategory.setText(bibles_parts.get(count).category_kor);
-                    textTitle.setText(bibles_parts.get(count).title_kor);
-                    textBody.setText(bibles_parts.get(count).body_kor);
-                    textChapter.setText(bibles_parts.get(count).chapter_kor);
-                    textUnderTitle.setText(bibles_parts.get(count).title_kor);
-                    count++;
-                }
-
-            }
-        });
-
-
-
 
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
