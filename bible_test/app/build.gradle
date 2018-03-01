@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.example.media_choi.bible_test"
+        applicationId "com.bibleapp.media_choi.bible_test"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.media_choi.bible_test.SplashScreen">
+    tools:context=".SplashScreen">
 
     <ImageView
         android:layout_width="match_parent"
