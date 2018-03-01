@@ -1,5 +1,6 @@
 package com.example.media_choi.bible_test;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //저장되어 있는 데이터 가져오기.*****************************************************************************************
+
         //선언
         mySpinner = (Spinner) findViewById(R.id.mySpinner);
         textCategory = (TextView) findViewById(R.id.textCategory);
@@ -60,11 +63,11 @@ public class MainActivity extends AppCompatActivity {
         mySpinner.setAdapter(adapter);
 
         //초기화면 display , DB에 저장된 마지막 사용자화면 디스플레이
-        textCategory.setText(bibles_parts.get(0).category_kor);
-        textTitle.setText(bibles_parts.get(0).title_kor);
-        textBody.setText(bibles_parts.get(0).body_kor);
-        textChapter.setText(bibles_parts.get(0).chapter_kor);
-        textUnderTitle.setText(bibles_parts.get(0).title_kor);
+        textCategory.setText(bibles_parts.get(count).category_kor);
+        textTitle.setText(bibles_parts.get(count).title_kor);
+        textBody.setText(bibles_parts.get(count).body_kor);
+        textChapter.setText(bibles_parts.get(count).chapter_kor);
+        textUnderTitle.setText(bibles_parts.get(count).title_kor);
 
         //이벤트
         // 한/영 버튼 누를 시
@@ -147,51 +150,51 @@ public class MainActivity extends AppCompatActivity {
                     bibles_parts = mDbHelper.getPartsData(PART_A);
                     count=0;
 
-                    textCategory.setText(bibles_parts.get(0).category_kor);
-                    textTitle.setText(bibles_parts.get(0).title_kor);
-                    textBody.setText(bibles_parts.get(0).body_kor);
-                    textChapter.setText(bibles_parts.get(0).chapter_kor);
-                    textUnderTitle.setText(bibles_parts.get(0).title_kor);
+                    textCategory.setText(bibles_parts.get(count).category_kor);
+                    textTitle.setText(bibles_parts.get(count).title_kor);
+                    textBody.setText(bibles_parts.get(count).body_kor);
+                    textChapter.setText(bibles_parts.get(count).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(count).title_kor);
 
                 } else if (i.equals(PART_B)) {
                     bibles_parts = mDbHelper.getPartsData(PART_B);
                     count=0;
 
-                    textCategory.setText(bibles_parts.get(0).category_kor);
-                    textTitle.setText(bibles_parts.get(0).title_kor);
-                    textBody.setText(bibles_parts.get(0).body_kor);
-                    textChapter.setText(bibles_parts.get(0).chapter_kor);
-                    textUnderTitle.setText(bibles_parts.get(0).title_kor);
+                    textCategory.setText(bibles_parts.get(count).category_kor);
+                    textTitle.setText(bibles_parts.get(count).title_kor);
+                    textBody.setText(bibles_parts.get(count).body_kor);
+                    textChapter.setText(bibles_parts.get(count).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(count).title_kor);
 
                 } else if (i.equals(PART_C)) {
                     bibles_parts = mDbHelper.getPartsData(PART_C);
                     count=0;
 
-                    textCategory.setText(bibles_parts.get(0).category_kor);
-                    textTitle.setText(bibles_parts.get(0).title_kor);
-                    textBody.setText(bibles_parts.get(0).body_kor);
-                    textChapter.setText(bibles_parts.get(0).chapter_kor);
-                    textUnderTitle.setText(bibles_parts.get(0).title_kor);
+                    textCategory.setText(bibles_parts.get(count).category_kor);
+                    textTitle.setText(bibles_parts.get(count).title_kor);
+                    textBody.setText(bibles_parts.get(count).body_kor);
+                    textChapter.setText(bibles_parts.get(count).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(count).title_kor);
 
                 } else if (i.equals(PART_D)) {
                     bibles_parts = mDbHelper.getPartsData(PART_D);
                     count=0;
 
-                    textCategory.setText(bibles_parts.get(0).category_kor);
-                    textTitle.setText(bibles_parts.get(0).title_kor);
-                    textBody.setText(bibles_parts.get(0).body_kor);
-                    textChapter.setText(bibles_parts.get(0).chapter_kor);
-                    textUnderTitle.setText(bibles_parts.get(0).title_kor);
+                    textCategory.setText(bibles_parts.get(count).category_kor);
+                    textTitle.setText(bibles_parts.get(count).title_kor);
+                    textBody.setText(bibles_parts.get(count).body_kor);
+                    textChapter.setText(bibles_parts.get(count).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(count).title_kor);
 
                 } else if (i.equals(PART_E)) {
                     bibles_parts = mDbHelper.getPartsData(PART_E);
                     count=0;
 
-                    textCategory.setText(bibles_parts.get(0).category_kor);
-                    textTitle.setText(bibles_parts.get(0).title_kor);
-                    textBody.setText(bibles_parts.get(0).body_kor);
-                    textChapter.setText(bibles_parts.get(0).chapter_kor);
-                    textUnderTitle.setText(bibles_parts.get(0).title_kor);
+                    textCategory.setText(bibles_parts.get(count).category_kor);
+                    textTitle.setText(bibles_parts.get(count).title_kor);
+                    textBody.setText(bibles_parts.get(count).body_kor);
+                    textChapter.setText(bibles_parts.get(count).chapter_kor);
+                    textUnderTitle.setText(bibles_parts.get(count).title_kor);
                 }
             }
 
@@ -201,4 +204,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
