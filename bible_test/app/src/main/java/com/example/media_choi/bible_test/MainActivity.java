@@ -14,26 +14,25 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Spinner mySpinner;
-    Button buttonChange;
-    TextView textCategory;
-    TextView textTitle;
-    TextView textBody;
-    TextView textUnderTitle;
-    TextView textChapter;
-    LinearLayout myLayout;
-    DBHelper mDbHelper;
-    ArrayList<DataModel> bibles = new ArrayList<>();
-    ArrayList<DataModel> bibles_parts = new ArrayList<>();
+    private Spinner mySpinner;
+    private Button buttonChange;
+    private TextView textCategory;
+    private TextView textTitle;
+    private TextView textBody;
+    private TextView textUnderTitle;
+    private TextView textChapter;
+    private LinearLayout myLayout;
+    private DBHelper mDbHelper;
+    private ArrayList<DataModel> bibles_parts = new ArrayList<>();
 
-    int count = 0;
-    int flag = 1;
+    private int count = 0;
+    private int flag = 1;
 
-    static final String PART_A = "A.새로운 삶";
-    static final String PART_B = "B.그리스도를 전파함";
-    static final String PART_C = "C.하나님을 의뢰함";
-    static final String PART_D = "D.그리스도 제자의 자격";
-    static final String PART_E = "E.그리스도를 닮아 감";
+    private static final String PART_A = "A.새로운 삶";
+    private static final String PART_B = "B.그리스도를 전파함";
+    private static final String PART_C = "C.하나님을 의뢰함";
+    private static final String PART_D = "D.그리스도 제자의 자격";
+    private static final String PART_E = "E.그리스도를 닮아 감";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
