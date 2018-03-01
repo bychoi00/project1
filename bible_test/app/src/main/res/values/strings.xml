@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">bible_test</string>
+    <string name="app_name">성경암송 60구절</string>
 
     <string-array name="number">
         <item>A.새로운 삶</item>
