@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         //저장되어 있는 데이터 가져오기.*****************************************************************************************
 
+
         //선언
         mySpinner = (Spinner) findViewById(R.id.mySpinner);
         textCategory = (TextView) findViewById(R.id.textCategory);
