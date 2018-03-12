@@ -14,13 +14,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner mySpinner;
-    private Button buttonChange;
-    private TextView textCategory;
-    private TextView textTitle;
-    private TextView textBody;
-    private TextView textUnderTitle;
-    private TextView textChapter;
+    Spinner mySpinner;
+    Button buttonChange;
+    TextView textCategory;
+    TextView textTitle;
+    TextView textBody;
+    TextView textUnderTitle;
+    TextView textChapter;
     private LinearLayout myLayout;
     private DBHelper mDbHelper;
     private ArrayList<DataModel> bibles_parts = new ArrayList<>();
@@ -34,24 +34,22 @@ public class MainActivity extends AppCompatActivity {
     private static final String PART_D = "D.그리스도 제자의 자격";
     private static final String PART_E = "E.그리스도를 닮아 감";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //저장되어 있는 데이터 가져오기.*****************************************************************************************
-
-
         //선언
-        mySpinner = (Spinner) findViewById(R.id.mySpinner);
-        textCategory = (TextView) findViewById(R.id.textCategory);
-        textTitle = (TextView) findViewById(R.id.textTitle);
-        textBody = (TextView) findViewById(R.id.textBody);
-        textChapter = (TextView) findViewById(R.id.textChapter);
-        textUnderTitle = (TextView) findViewById(R.id.textUnderTitle);
-        buttonChange = (Button) findViewById(R.id.buttonChange);
-        myLayout = (LinearLayout) findViewById(R.id.myLayout);
+        declar();
 
+        //저장되어 있는 데이터 가져오기.*****************************************************************************************
+        if (savedInstanceState != null) {
+            count = savedInstanceState.getInt("count");
+            flag = savedInstanceState.getInt("flag");
+            declar();
+
+        }
 
         //json Data Load , id를 로컬DB를 통해 저장시켜뒀다가 종료시점 이후 불러오기***************************************
         mDbHelper = new DBHelper(this);
@@ -95,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         myLayout.setOnTouchListener(new OnSwipeTouchListener(this) {
             public void onSwipeTop() {
             }
+
             public void onSwipeRight() {
                 //layout 클릭 시 마다 텍스트 변경 디스플레이
                 if (count == 0) {
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                     textBody.setText(bibles_parts.get(bibles_parts.size() - 1).body_kor);
                     textChapter.setText(bibles_parts.get(bibles_parts.size() - 1).chapter_kor);
                     textUnderTitle.setText(bibles_parts.get(bibles_parts.size() - 1).title_kor);
-                    count = bibles_parts.size()-1;
+                    count = bibles_parts.size() - 1;
                     flag = 1;
                 } else {
                     count--;
@@ -115,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
                     flag = 1;
                 }
             }
+
             public void onSwipeLeft() {
                 //layout 클릭 시 마다 텍스트 변경 디스플레이
                 if ((count + 1) == bibles_parts.size()) {
@@ -136,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                     flag = 1;
                 }
             }
+
             public void onSwipeBottom() {
             }
         });
@@ -148,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
                 Object i = parent.getItemAtPosition(position);
                 if (i.equals(PART_A)) {
                     bibles_parts = mDbHelper.getPartsData(PART_A);
-                    count=0;
+                    count = 0;
 
                     textCategory.setText(bibles_parts.get(count).category_kor);
                     textTitle.setText(bibles_parts.get(count).title_kor);
@@ -158,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else if (i.equals(PART_B)) {
                     bibles_parts = mDbHelper.getPartsData(PART_B);
-                    count=0;
+                    count = 0;
 
                     textCategory.setText(bibles_parts.get(count).category_kor);
                     textTitle.setText(bibles_parts.get(count).title_kor);
@@ -168,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else if (i.equals(PART_C)) {
                     bibles_parts = mDbHelper.getPartsData(PART_C);
-                    count=0;
+                    count = 0;
 
                     textCategory.setText(bibles_parts.get(count).category_kor);
                     textTitle.setText(bibles_parts.get(count).title_kor);
@@ -178,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else if (i.equals(PART_D)) {
                     bibles_parts = mDbHelper.getPartsData(PART_D);
-                    count=0;
+                    count = 0;
 
                     textCategory.setText(bibles_parts.get(count).category_kor);
                     textTitle.setText(bibles_parts.get(count).title_kor);
@@ -188,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else if (i.equals(PART_E)) {
                     bibles_parts = mDbHelper.getPartsData(PART_E);
-                    count=0;
+                    count = 0;
 
                     textCategory.setText(bibles_parts.get(count).category_kor);
                     textTitle.setText(bibles_parts.get(count).title_kor);
@@ -205,5 +206,25 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void declar() {
+        //선언
+        mySpinner = (Spinner) findViewById(R.id.mySpinner);
+        textCategory = (TextView) findViewById(R.id.textCategory);
+        textTitle = (TextView) findViewById(R.id.textTitle);
+        textBody = (TextView) findViewById(R.id.textBody);
+        textChapter = (TextView) findViewById(R.id.textChapter);
+        textUnderTitle = (TextView) findViewById(R.id.textUnderTitle);
+        buttonChange = (Button) findViewById(R.id.buttonChange);
+        myLayout = (LinearLayout) findViewById(R.id.myLayout);
+    }
+
+    //Activity 파괴시 데이터 저장
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("count", count);
+        outState.putInt("flag", flag);
+    }
 
 }
