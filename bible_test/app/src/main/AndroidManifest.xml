@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bibleapp.media_choi.bible_test">
 
+    <uses-permission android:name="com.android.vending.BILLING"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/bibleicon"

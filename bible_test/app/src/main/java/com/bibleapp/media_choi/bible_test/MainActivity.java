@@ -1,6 +1,8 @@
 package com.bibleapp.media_choi.bible_test;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,9 +12,15 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.anjlab.android.iab.v3.BillingProcessor;
+import com.anjlab.android.iab.v3.TransactionDetails;
+
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BillingProcessor.IBillingHandler{
+
+
+    BillingProcessor bp;
 
     Spinner mySpinner;
     Button buttonChange;
@@ -42,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         //선언
         declar();
+        bp.purchase(MainActivity.this,"android.test.purchased");
 
         //저장되어 있는 데이터 가져오기.*****************************************************************************************
         if (savedInstanceState != null) {
@@ -216,6 +225,8 @@ public class MainActivity extends AppCompatActivity {
         textUnderTitle = (TextView) findViewById(R.id.textUnderTitle);
         buttonChange = (Button) findViewById(R.id.buttonChange);
         myLayout = (LinearLayout) findViewById(R.id.myLayout);
+        bp = new BillingProcessor(this,"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr/RHIdMjrpCLTC3/7SU1SBOyAjPu/PhZLphDwBGHadaz6qQU92iUsrFtFNdgx7w/2keOusUDjCUNzjj0lAq4fwkgBzuAEFf9tX3o/YvHc5KnB70G/VCKQRZEd/K9R5zaeJ9OnyX7IVzp35SQoqHrKTntwVaLQi8Dc21jdHiAwoa7XYxcZOGx8EnQET4wQEHNfkXGKKwd1+veDc97zJw44hFJiHgNeKWVXHgF73Vn6mXQEvTzuTZwqoJIhSjAUSXdkxJYdppQ+KtRtKUuEPKDno5tJ3WlFz/3169hzbIpYnrHadtLnlA6N77exbq9SKJYr9C4jf/unOmneAr6TRAbDwIDAQAB",this);
+
     }
 
     //Activity 파괴시 데이터 저장
@@ -227,4 +238,24 @@ public class MainActivity extends AppCompatActivity {
         outState.putInt("flag", flag);
     }
 
+
+    @Override
+    public void onProductPurchased(@NonNull String productId, @Nullable TransactionDetails details) {
+
+    }
+
+    @Override
+    public void onPurchaseHistoryRestored() {
+
+    }
+
+    @Override
+    public void onBillingError(int errorCode, @Nullable Throwable error) {
+
+    }
+
+    @Override
+    public void onBillingInitialized() {
+
+    }
 }
