@@ -6,8 +6,8 @@ android {
         applicationId "com.bibleapp.media_choi.bible_test"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 6
-        versionName '1.6'
+        versionCode 8
+        versionName '1.8'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -29,7 +29,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.google.android.gms:play-services-ads:11.8.0'
     implementation 'com.google.android.gms:play-services-maps:11.8.0'
-    compile 'com.anjlab.android.iab.v3:library:1.0.44'
+    implementation 'com.anjlab.android.iab.v3:library:1.0.44'
 
 
 }
